@@ -1,10 +1,5 @@
 --基本思路: 玉石之间插入2个阳明指, 挂4dot
-
---载入时，输出信息
-output("----------奇穴----------")
-output("[弹指][青冠][倚天][踏歌][青歌][雪中行][清流][钟灵][流离][雪弃][焚玉][涓流]")
-output("常规秘籍")
-
+output("奇穴: [弹指][青冠][倚天][踏歌][青歌][雪中行][清流][钟灵][流离][雪弃][焚玉][涓流]")
 
 --变量表
 local v = {}
@@ -42,10 +37,10 @@ function Main(g_player)
 	end
 
 	
-	v["商阳时间"] = tbufftime("商阳指", true)
-	v["钟林时间"] = tbufftime("钟林毓秀", true)
-	v["兰摧时间"] = tbufftime("兰摧玉折", true)
-	v["快雪时间"] = tbufftime("快雪时晴", true)
+	v["商阳时间"] = tbufftime("商阳指", id())
+	v["钟林时间"] = tbufftime("钟林毓秀", id())
+	v["兰摧时间"] = tbufftime("兰摧玉折", id())
+	v["快雪时间"] = tbufftime("快雪时晴", id())
 	v["有4dot"] = gettimer("吞海") > 1.2 and v["商阳时间"] > 0 and v["钟林时间"] > 0 and v["兰摧时间"] > 0 and v["快雪时间"] > 0
 
 
@@ -66,7 +61,6 @@ function Main(g_player)
 		end
 	end
 
-
 	--快雪群怪
 	_, v["目标附近敌人数量"] = tnpc("关系:敌对", "距离<6", "可选中")
 	if v["目标附近敌人数量"] >= 3 then
@@ -78,7 +72,6 @@ function Main(g_player)
 		cast("快雪时晴")
 	end
 
-
 	--有4dot, 爆玉石
 	if v["有4dot"] then
 		--芙蓉并蒂刷新dot, 玉石增伤
@@ -88,8 +81,6 @@ function Main(g_player)
 
 		cast("玉石俱焚")
 	end
-
-	
 
 	--乱撒阳明指
 	if gettimer("乱洒青荷") < 0.5 or buff("乱洒青荷") then
@@ -132,34 +123,8 @@ function Main(g_player)
 		cast("碧水滔天", true)
 	end
 
+	cast("阳明指")
 end
-
-
---[[开始读条
-function OnPrepare(CasterID, SkillName, SkillID, SkillLevel, TargetType, TargetID, PosY, PosZ, Frame, StartFrame, FrameCount)
-	if CasterID == id() then
-		if TargetType == 2 then
-			print("OnPrepare->["..xname(CasterID).."] 开始读条:"..SkillName..", 技能ID:"..SkillID..", 技能等级:"..SkillLevel..", 目标位置:"..TargetID.."|"..PosY.."|"..PosZ..", 读条帧数:"..Frame..", 开始帧:"..StartFrame..", 当前帧:"..FrameCount)
-		else
-			print("OnPrepare->["..xname(CasterID).."] 开始读条:"..SkillName..", 技能ID:"..SkillID..", 技能等级:"..SkillLevel..", 目标ID:"..TargetID..", 读条帧数:"..Frame..", 开始帧:"..StartFrame..", 当前帧:"..FrameCount)
-		end
-	end
-end
---]]
-
-
-local tSkill = {
-[17] = "打坐",
-[18730] = "兰摧玉折单一目标",
-[285] = "钟林毓秀_正常DOT",
-[6693] = "万花_商阳指",
-[14644] = "涓流判定目标气血叠加会心效果",
-[18722] = "兰摧标记触发奇穴效果",
-[14941] = "正常阳明指伤害",
-[6126] = "",
-[6128] = "",
-[6129] = "",
-}
 
 --释放技能
 function OnCast(CasterID, SkillName, SkillID, SkillLevel, TargetType, TargetID, PosY, PosZ, StartFrame, FrameCount)
@@ -186,50 +151,4 @@ function OnCast(CasterID, SkillName, SkillID, SkillLevel, TargetType, TargetID, 
 			settimer("乱洒兰摧")
 		end
 	end
-
-	--[[输出调试信息
-	if CasterID == id() then
-		--过滤掉不重要的技能
-		if tSkill[SkillID] then return end
-		
-		if TargetType == 2 then
-			print("OnCast->["..xname(CasterID).."] 释放:"..SkillName..", 技能ID:"..SkillID..", 技能等级:"..SkillLevel..", 目标位置:"..TargetID.."|"..PosY.."|"..PosZ..", 开始帧:"..StartFrame..", 当前帧:"..FrameCount)
-		else
-			print("OnCast->["..xname(CasterID).."] 释放:"..SkillName..", 技能ID:"..SkillID..", 技能等级:"..SkillLevel..", 目标ID:"..TargetID..", 开始帧:"..StartFrame..", 当前帧:"..FrameCount)
-		end
-	end
-	--]]
-
 end
---]]
-
-
-local tBuff = {
-[103] = "调息",
-[24277] = "万花_脱战能量流失",
-[24281] = "万花_脱战能量流失_战斗维持",
-[23390] = "NPC助战能量buff",
-[11809] = "倚天",
-[16756] = "倚天回蓝内置CD",
-[12725] = "兰摧监控",
-[12727] = "钟林监控A",
-[12728] = "商阳指监控标记A",
-[12588] = "对兰摧标记目标伤害提高",
-[6266] = "行气血",		--[阳明指]瞬发
-}
-
---[[自己和队友buff更新
-function OnBuff(CharacterID, BuffName, BuffID, BuffLevel, StackNum, SkillSrcID, StartFrame, EndFrame, FrameCount)
-	--过滤掉不重要的buff
-	if tBuff[BuffID] then return end
-
-	--输出自己buff
-	if CharacterID == id() then
-		if StackNum  > 0 then
-			print("["..xname(CharacterID).."] 添加buff: ".. BuffName..", ID: "..BuffID..", 等级: "..BuffLevel..", 层数: "..StackNum..", 源ID: "..SkillSrcID..", 开始帧: "..StartFrame..", 当前帧: "..FrameCount..", 结束帧: "..EndFrame..", 剩余时间: "..(EndFrame-FrameCount)/16)
-		else
-			print("["..xname(CharacterID).."] 移除buff: ".. BuffName..", ID: "..BuffID..", 等级: "..BuffLevel..", 层数: "..StackNum..", 源ID: "..SkillSrcID..", 开始帧: "..StartFrame..", 当前帧: "..FrameCount)
-		end
-	end
-end
---]]
