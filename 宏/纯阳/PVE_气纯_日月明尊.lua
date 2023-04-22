@@ -40,13 +40,11 @@ function Main()
 		end
 	end
 
-	--归墟秘境
-	if tcasting("护体") and castleft() < 0.5 then
-		settimer("目标读条护体")
-	end
-	if gettimer("目标读条护体") < 1 or tbuff("4147") then	--护体 反弹伤害
-		stopcasting()
-		return
+	--副本处理
+	local mapName = map()
+	local func = tMapFunc[mapName]
+	if func then
+		func(g_player)
 	end
 
 	--八卦洞玄
@@ -196,5 +194,31 @@ end
 function OnNpcEnter(NpcID, NpcName, NpcTemplateID, NpcModelID, EmployerID)
 	if EmployerID == id() and NpcTemplateID == 201578 then
 		print("OnNpcEnter->"..NpcName..", NPCID: "..NpcID..", 模板ID: "..NpcTemplateID..", 表现ID: "..NpcModelID)
+	end
+end
+
+-------------------------------------------------副本处理
+tMapFunc = {}
+
+tMapFunc["归墟秘境"] = function(g_player)
+	--击飞
+	if tcasting("击飞") then
+		stopcasting()
+		if tcastleft() < 0.5 then
+			cast("蹑云逐月")
+			cast("迎风回浪")
+			cast("凌霄揽胜")
+			cast("瑶台枕鹤")
+		end
+		exit()
+	end
+
+	--护体
+	if tcasting("护体") and tcastleft() < 0.5 then
+		settimer("目标读条护体")
+	end
+	if gettimer("目标读条护体") < 1 or tbuff("4147") then	--护体 反弹伤害
+		stopcasting()
+		exit()
 	end
 end
