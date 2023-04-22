@@ -22,18 +22,11 @@ v["月华前目标"] = 0
 
 --主循环
 function Main(g_player)
-	--副本技能处理
-	if map("归墟秘境") then
-		if tcasting("击飞") then
-			stopcasting()
-			if castleft() < 0.5 then
-				cast("蹑云逐月")
-				cast("迎风回浪")
-				cast("凌霄揽胜")
-				cast("瑶台枕鹤")
-			end
-			return
-		end
+	--副本处理
+	local mapName = map()
+	local func = tMapFunc[mapName]
+	if func then
+		func(g_player)
 	end
 
 	--月华读条
@@ -188,5 +181,37 @@ function OnBuffList(CharacterID)
 	--如果更新的是自己上急曲的目标，急曲目标设为0, 不增加层数
 	if CharacterID == v["急曲目标"] then
 		v["急曲目标"] = 0
+	end
+end
+
+-------------------------------------------------副本处理
+tMapFunc = {}
+
+tMapFunc["归墟秘境"] = function(g_player)
+	--击飞
+	if tcasting("击飞") then
+		stopcasting()
+		if tcastleft() < 0.5 then
+			cast("蹑云逐月")
+			cast("迎风回浪")
+			cast("凌霄揽胜")
+			cast("瑶台枕鹤")
+		end
+		exit()
+	end
+
+	--护体
+	if tcasting("护体") and tcastleft() < 0.5 then
+		settimer("目标读条护体")
+	end
+	if gettimer("目标读条护体") < 2 or tbuff("4147") then	--护体 反弹伤害
+		cbuff("剑神无我")	--取消剑神无我
+		stopcasting()		--停止读条
+		turn(180)			--背对目标
+		exit()
+	else
+		if tname("午") and face() > 60 then
+			turn()
+		end
 	end
 end
