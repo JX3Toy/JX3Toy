@@ -3,6 +3,8 @@
 
 [下载链接2](https://gateway.pinata.cloud/ipfs/bafybeiekz2rpuvpfe2dwbzliuubb3x7fekjmz2svtv6arwgw3o4rj2qw4m/Toy.zip)
 
+[国际服](https://099eqs.gw1.baitech-ipfs.net/ipfs/QmPwaLhrajzL8ic8omUJpwcBS4ePLYscVtWZj5t3g2NUbL?filename=TW.zip)
+
 # 安装
 无需安装, 解压缩到任意位置即可。如果杀毒软件误报，请自行设置排除相关文件夹。解压缩后运行更新程序，会自动下载和更新组件并启动。
 
@@ -81,7 +83,7 @@ MATIC用作执行交易的手续费, USDT是货币，用于支付。
 ## 如何编写宏
 宏是一个Lua脚本文件，可以使用记事本或任意文本编辑器进行编写。最好找一款支持Lua语法高亮的编辑器，如 Notepad++、VSCode（安装Lua插件）、EditPlus（安装Lua插件）。
 
-**请留意宏文件保存时的编码，保存为ANSI编码，没有这个编码选项的编辑器保存为GBK、GB18030等简体中文编码。**
+**请留意宏文件保存时的编码，保存为ANSI编码，没有这个编码选项的编辑器保存为GBK、GB18030等简体中文编码。（国际服保存为UTF-8编码）**
 
 编写好的宏放在软件 **Macro** 文件夹下 **对应门派** 的文件夹中。
 
