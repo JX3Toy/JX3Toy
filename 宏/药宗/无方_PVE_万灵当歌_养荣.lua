@@ -15,6 +15,7 @@ setglobal("自动面向", false)
 
 --宏选项
 addopt("副本防开怪", false)
+addopt("内力小于60%关千枝", false)
 
 --变量表
 local v = {}
@@ -112,8 +113,8 @@ function Main()
 	--银光照雪
 	if rela("敌对") then
 		if dis() < 6 or (v["苍棘"] ~= 0 and xxdis(v["苍棘"], tid()) < 6) then	--自己或苍棘6尺内
-			if v["凄骨时间"] > 0 and v["相使时间"] > 0 and buff("千枝绽蕊") and gettimer("关千枝") > 0.3 then
-			--if v["凄骨时间"] > 0 and v["相使时间"] > 0 then
+			--if v["凄骨时间"] > 0 and v["相使时间"] > 0 and buff("千枝绽蕊") and gettimer("关千枝") > 0.3 then
+			if v["凄骨时间"] > 0 and v["相使时间"] > 0 then
 				if cdtime("银光照雪") <= 0 then
 					if CastX("绿野蔓生") then	--绿野绑定银光, 含锋飞叶系数低
 						CastX("银光照雪")
@@ -128,7 +129,7 @@ function Main()
 
 	--橙武
 	if bufftime("21796") > casttime("川乌射罔") then
-		f["开千枝"]("放川乌")
+		f["开千枝"]("放川乌", 0.25)
 		CastX("川乌射罔")
 	end
 
@@ -154,7 +155,8 @@ function Main()
 	if rela("敌对") and dis() < 20 and gettimer("川乌读条结束") > 0.5 and not v["移动键被按下"] then
 		if v["凄骨时间"] < 12 then
 			if v["药性"] <= -3 or (gettimer("释放沾衣未妨") < 4 and v["药性"] - (5 -v["且待跳数"]) <= -3) then
-				if cdtime("川乌射罔") <= 0 and f["开千枝"]("放川乌") then
+				if cdtime("川乌射罔") <= 0 then
+					f["开千枝"]("放川乌", 0.25)
 					if CastX("川乌射罔") then
 						v["川乌跳数"] = 0
 						stopmove()
@@ -168,14 +170,15 @@ function Main()
 	--且待时休
 	if rela("敌对") and (v["目标静止"] or ttid() == id()) and dis() < 15 and not v["移动键被按下"] then
 		if v["逆乱层数"] >= 4 and v["逆乱时间"] > casttime("且待时休") + v["GCD间隔"] * 2 + 0.5 and not v["飞叶条件"] then
-			if v["川乌透支次数"] < 2 and v["相使时间"] > casttime("且待时休") + casttime("川乌射罔") + 0.5 then
-			if cdtime("且待时休") <= 0 and f["开千枝"]("放且待") then
-				if CastX("且待时休") then
-					v["且待跳数"] = 0
-					stopmove()
-					return
+			if v["川乌CD"] > casttime("且待时休") and v["相使时间"] > casttime("且待时休") + casttime("川乌射罔") + 0.5 then
+				if cdtime("且待时休") <= 0 then
+					f["开千枝"]("放且待", 0.4)
+					if CastX("且待时休") then
+						v["且待跳数"] = 0
+						stopmove()
+						return
+					end
 				end
-			end
 			end
 		end
 	end
@@ -183,19 +186,21 @@ function Main()
 	--含锋破月
 	if rela("敌对") then
 		if (dis() < 6 and face() < 90) or (v["苍棘"] ~= 0 and xxdis(v["苍棘"], tid()) < 6) then	--自己或苍棘6尺内
+			if v["药性"] <= -3 or (gettimer("释放沾衣未妨") < 4 and v["药性"] - (5 -v["且待跳数"]) <= -3) or v["川乌CD"] > v["GCD间隔"] * 2 then
 				if v["逆乱层数"] >= 8 and v["逆乱时间"] > 11 then
 					if v["凄骨时间"] > 1 and v["相使时间"] > 1 then
-						if cdtime("含锋破月") <= 0 and f["开千枝"]("放含锋") then
+						if cdtime("含锋破月") <= 0 then
+							f["开千枝"]("放含锋", 0.4)
 							CastX("含锋破月")
 						end
 					end
 				end
-			--end
+			end
 		end
 	end
 
 	--钩吻
-	if v["相使时间"] < 3 or v["药性"] < -3 then
+	if v["相使时间"] < 3 or v["药性"] < -3 --[[or v["药性"] - (5 -v["且待跳数"]) < -3--]] then
 		CastX("钩吻断肠")
 	end
 
@@ -214,13 +219,13 @@ end
 
 -------------------------------------------------------------------------------
 
-f["开千枝"] = function(szReason)
+f["开千枝"] = function(szReason, nMana)
 	v["关千枝"] = false
 	if buff("千枝绽蕊") and gettimer("关千枝") > 0.3 then
 		return true
 	end
 
-	if mana() > 0.3 then
+	if mana() > nMana then
 		if cast("千枝绽蕊") then
 			print("-------------------- 开千枝:"..szReason)
 			return true
@@ -232,12 +237,14 @@ end
 f["关千枝"] = function()
 	if gettimer("川乌射罔") < 0.3 or casting("川乌射罔") or gettimer("川乌读条结束") < 0.3 then return end
 	if gettimer("且待时休") < 0.3 or casting("且待时休") or gettimer("且待读条结束") < 0.3 then return end
-	if gettimer("含锋破月") < 0.3 or v["飞叶条件"] then return end
+	if gettimer("含锋破月") < 0.3 or v["飞叶条件"] or gettimer("释放飞叶满襟") <= 0.5 then return end
 
 	--川乌 含锋 且待都CD
-	if v["川乌CD"] > 3 and v["含锋CD"] > 3 and v["且待CD"] > 3 and mana() < 60 then
-		if cbuff("千枝绽蕊") then
-			settimer("关千枝")
+	if v["川乌CD"] > 3 and v["含锋CD"] > 3 and v["且待CD"] > 3 then
+		if not getopt("内力小于60%关千枝") or mana() < 0.6 then
+			if cbuff("千枝绽蕊") then
+				settimer("关千枝")
+			end
 		end
 	end
 
@@ -269,8 +276,6 @@ function PrintInfo(s)
 	t[#t+1] = "沾衣CD:"..v["沾衣CD"]
 	t[#t+1] = "绿野CD:"..v["绿野CD"]
 	t[#t+1] = "千枝CD:"..scdtime("千枝绽蕊")
-
-	t[#t+1] = "状态:"..state()
 	
 	print(table.concat(t, ", "))
 end
@@ -364,6 +369,10 @@ function OnCast(CasterID, SkillName, SkillID, SkillLevel, TargetType, TargetID, 
 
 		if SkillID == 28372 then
 			v["关千枝"] = "飞叶释放结束"
+		end
+
+		if SkillID == 27637 then	--飞叶
+			settimer("释放飞叶满襟")
 		end
 	end
 end
