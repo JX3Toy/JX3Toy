@@ -1,10 +1,10 @@
 
-更多下载链接、安装、使用、宏命令等请转往下列网站
+更多下载链接、安装、使用、宏指令等请转往下列网站
 
-<https://jx3toy.github.io>
+<https://jx3toy.github.io> (主站)
 
-<https://jx3toy.netlify.app>
+<https://jx3toy.netlify.app> (镜像1)
 
-<https://jx3toy.onrender.com>
+<https://jx3toy.onrender.com> (镜像2)
 
-<https://jx3toy.pages.dev>
+<https://jx3toy.pages.dev> (镜像3)
