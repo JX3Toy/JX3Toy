@@ -1,4 +1,4 @@
-# <img src="https://raw.githubusercontent.com//JX3Toy/JX3Toy/main/readme.svg?sanitize=true height="130"> JX3Toy
+# ![JX3Toy](https://raw.githubusercontent.com//JX3Toy/JX3Toy/main/readme.svg?sanitize=true) JX3Toy
 
 
 
