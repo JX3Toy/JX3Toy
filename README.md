@@ -1,5 +1,5 @@
 <p align="center">
-  ![Logo](/readme.svg)
+    <img src="https://raw.githubusercontent.com/JX3Toy/JX3Toy/main/readme.svg?sanitize=true" height="130">
 </p>
 
 ### 免责声明(Disclaimer)
