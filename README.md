@@ -8,7 +8,6 @@
 
 <br>
 <br>
-<br>
 
 ## 免责声明(Disclaimer)
 本软件仅供学习和研究使用, 严禁将本软件用于任何商业或非法用途。  
@@ -18,6 +17,8 @@
 This software is for study and research purposes only. Any commercial or illegal use of this software is strictly prohibited.  
 If you downloaded this software, it must be completely deleted from your computer or storage device within 24 hours.  
 If this software infringes upon your relevant rights, please send an email to <JX3Toy@proton.me>.  
+
+<br>
 
 ## 安装、使用、宏指令等请转往下列网站
 
