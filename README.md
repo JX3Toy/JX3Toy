@@ -1,4 +1,6 @@
-![Logo](/readme.svg)
+<p align="center">
+  ![Logo](/readme.svg)
+</p>
 
 ### 免责声明(Disclaimer)
 本软件仅供学习和研究使用, 严禁将本软件用于任何商业或非法用途。  
