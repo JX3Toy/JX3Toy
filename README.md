@@ -9,12 +9,10 @@
 
 ## 免责声明(Disclaimer)
 本软件仅供学习和研究使用, 严禁将本软件用于任何商业或非法用途。  
-如果您下载了本软件, 必须在24小时内从您的电脑或存储设备中彻底删除。  
-如果本软件侵犯了您的相关权利，请发邮件至 <JX3Toy@proton.me>。  
+如果本软件侵犯了您的相关权利，请发邮件至 <JX3Toy@proton.me>。
 
 This software is for study and research purposes only. Any commercial or illegal use of this software is strictly prohibited.  
-If you downloaded this software, it must be completely deleted from your computer or storage device within 24 hours.  
-If this software infringes upon your relevant rights, please send an email to <JX3Toy@proton.me>.  
+If this software infringes upon your relevant rights, please send an email to <JX3Toy@proton.me>.
 
 <br>
 
