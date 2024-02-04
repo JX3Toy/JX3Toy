@@ -24,3 +24,8 @@ This software is for study and research purposes only. Any commercial or illegal
 <https://jx3toy.onrender.com> (镜像2)
 
 <https://jx3toy.pages.dev> (镜像3)
+
+## 捐赠(Donate)
+
+<p align="center"><img src="https://raw.githubusercontent.com/JX3Toy/JX3Toy/main/ERC-20.png"></p>
+<p>0x7f28d68C0ff5b12E054143926d263febffDd7842</p>
