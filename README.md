@@ -11,8 +11,7 @@
 本软件仅供学习和研究使用, 严禁将本软件用于任何商业或非法用途。  
 如果本软件侵犯了您的相关权利，请发邮件至 <JX3Toy@proton.me>。
 
-This software is for study and research purposes only. Any commercial or illegal use of this software is strictly prohibited.  
-If this software infringes upon your relevant rights, please send an email to <JX3Toy@proton.me>.
+This software is for study and research purposes only. Any commercial or illegal use of this software is strictly prohibited. If this software infringes upon your relevant rights, please send an email to <JX3Toy@proton.me>.
 
 <br>
 
