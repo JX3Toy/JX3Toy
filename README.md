@@ -30,6 +30,7 @@ This software is for study and research purposes only. Any commercial or illegal
 ## 捐赠(Donate)
 如果您觉得这个项目对您有帮助, 欢迎通过加密货币的方式进行捐赠。  
 下方二维码为 ERC-20 地址, 可接收 USDT 等加密货币，主网 **Polygon**  
+捐赠后请发邮件至 <JX3Toy@proton.me> 告知, 多谢支持！
 
 ![0x7f28d68C0ff5b12E054143926d263febffDd7842](ERC-20.png)
 
