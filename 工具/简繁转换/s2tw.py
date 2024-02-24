@@ -32,13 +32,13 @@ file.close()
 texttw = s2twp.convert(text)
 
 # 处理个别转换错误
-textzh = texttw.replace('決雲勢', '訣雲勢')
+texttw = texttw.replace('決雲勢', '訣雲勢')
 
 
 # 保存到新文件
 newfilepath = filedir + '\\' + filename + '_TW.lua'
 newfile = open(newfilepath, 'w', encoding='utf-8')
-newfile.write(textzh)
+newfile.write(texttw)
 newfile.close()
 
 #os.system('pause')
