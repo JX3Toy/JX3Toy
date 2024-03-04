@@ -17,7 +17,7 @@ function OnCast(CasterID, SkillName, SkillID, SkillLevel, TargetType, TargetID, 
 end
 
 -- 如果主宏中没有实现同名回调，直接把模块的回调函数作为主宏的回调
--- 注意: 这种方式会覆盖主宏的同名函数, 如果主宏中有同名函数，有上面的间接调用
+-- 注意: 这种方式会覆盖主宏的同名函数, 如果主宏中有同名函数，用上面的间接调用
 if getopt("记录副本数据") and DungeonLog then
 	OnEnterMap = DungeonLog.OnEnterMap
 	OnNpcEnter = DungeonLog.OnNpcEnter
