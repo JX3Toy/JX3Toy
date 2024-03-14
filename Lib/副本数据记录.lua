@@ -66,8 +66,9 @@ end
 -- NPC出现
 DungeonLog.OnNpcEnter = function(NpcID, NpcName, NpcTemplateID, NpcModelID, EmployerID, Intensity)
 	if dungeon() then	--在副本内
-		if Intensity == 6 then		--是Boss
+		if Intensity == 6 and NpcName and #NpcName > 0 then		--是Boss
 			tBoss[NpcID] = NpcName
+			print("Boss出现->["..NpcName.."]", "模板ID:"..NpcTemplateID, NpcID)
 		end
 		if tBoss[EmployerID] then	--主人是Boss
 			tNpc[NpcID] = NpcName
