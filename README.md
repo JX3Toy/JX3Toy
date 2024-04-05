@@ -18,3 +18,11 @@ Windows 11
 <https://jx3toy.onrender.com>
 
 <https://jx3toy.pages.dev>
+
+## sponsors
+
+<a href="https://zulip.com">
+  <img width="60" height="60" src="https://raw.githubusercontent.com/zulip/zulip/main/static/images/logo/zulip-icon-circle.svg">
+</a>
+
+Zulip is an open-source modern team chat app designed to keep both live and asynchronous conversations organized.
