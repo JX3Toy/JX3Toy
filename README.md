@@ -13,9 +13,9 @@
 
 有意可通过以下方式联系：
 
-Email: JX3Toy@proton.me
-Keybase: https://keybase.io/jx3toy
-社区: https://jx3toy.zulipchat.com
+Email: JX3Toy@proton.me  
+Keybase: https://keybase.io/jx3toy  
+社区: https://jx3toy.zulipchat.com  
 
 ## sponsors
 
