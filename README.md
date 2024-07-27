@@ -6,14 +6,6 @@
 
 ## 因时间精力等个人原因，本项目已暂停更新维护。
 
-有偿提供lua注入框架源码。
-- 不修改客户端
-- 提供源码，方便二次开发
-- 兼容国服、国际服、怀旧服
-- 可长期使用，提供后续更新等技术支持
-
-有兴趣研究可通过以下方式联系（不闲聊）：
-
 Email: JX3Toy@proton.me  
 Keybase: https://keybase.io/jx3toy  
 社区: https://jx3toy.zulipchat.com  
