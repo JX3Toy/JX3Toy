@@ -10,9 +10,7 @@
 
 
 社区: <https://jx3toy.zulipchat.com>
-
 Email: <jx3toy@proton.me>
-
 Keybase: <https://keybase.io/jx3toy>
 
 
