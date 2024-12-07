@@ -9,9 +9,9 @@
 - 全中文指令, 替代99%手动操作
 
 
-社区: <https://jx3toy.zulipchat.com>
-Email: <jx3toy@proton.me>
-Keybase: <https://keybase.io/jx3toy>
+社区: <https://jx3toy.zulipchat.com>  
+Email: <jx3toy@proton.me>  
+Keybase: <https://keybase.io/jx3toy>  
 
 
 ## sponsors
