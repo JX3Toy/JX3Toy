@@ -1,12 +1,6 @@
 <img width="120" height="120" src="https://raw.githubusercontent.com/JX3Toy/JX3Toy/main/Logo.svg" alt="JX3Toy"/>
 
-# JX3Toy
-极速端全功能减负工具。
-
-- 不修改客户端
-- 不修游戏行为
-- 支持使用Lua编写宏和脚本
-- 全中文指令, 替代99%手动操作
+## 本项目已停止更新维护。
 
 
 社区: <https://jx3toy.zulipchat.com>  
