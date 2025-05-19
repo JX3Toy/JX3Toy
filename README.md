@@ -1,6 +1,6 @@
 <img width="120" height="120" src="https://raw.githubusercontent.com/JX3Toy/JX3Toy/main/Logo.svg" alt="JX3Toy"/>
 
-## 本项目已停止更新维护。
+## 本项目已停止更新维护
 
 
 社区: <https://jx3toy.zulipchat.com>  
